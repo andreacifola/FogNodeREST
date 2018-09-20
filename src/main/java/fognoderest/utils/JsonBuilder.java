@@ -1,13 +1,14 @@
 package fognoderest.utils;
 
 
-import fognoderest.entities.Node;
+import fognoderest.entities.FogNode;
 
 public class JsonBuilder {
 
-    public String nodeToJson(Node node){
-        String payload = "{ \"id\" :" + node.getId() + ", \"ram\" : " + node.getRam() + ", \"cpu\" : " + node.getCpu() +
-                ", \"totalBattery\" : " + node.getBattery() + ", \"storage\" : " + node.getStorage() + "}";
+    public String nodeToJson(FogNode fogNode){
+        String payload = "{ \"id\" :" + fogNode.getId() + ", \"ram\" : " + fogNode.getRam() + ", \"cpu\" : " +
+                fogNode.getCpu() + ", \"battery\" : " + fogNode.getBattery() + ", \"storage\" : " +
+                fogNode.getStorage() + ", \"type\" : " + "\"" + fogNode.getType() + "\"" + "}";
         return payload;
     }
 }
