@@ -1,6 +1,12 @@
 package fognoderest;
 
+import fognoderest.Solver.HeavyTaskSolver;
+import fognoderest.Solver.LightTaskSolver;
+import fognoderest.Solver.MediumTaskSolver;
 import fognoderest.entities.FogNode;
+import fognoderest.entities.HeavyTask;
+import fognoderest.entities.LightTask;
+import fognoderest.entities.MediumTask;
 import fognoderest.rest.RegisterService;
 import fognoderest.utils.JsonBuilder;
 import generator.FogNodeGenerator;
@@ -23,5 +29,16 @@ public class FogNodeRestApplication {
 		String requestUrl="http://localhost:8080/registration";
 		String res = registerService.sendPostRequestForRegistration(requestUrl, payload);
 		System.out.println(res);
+/*
+        MediumTask task = new MediumTask();
+        task.setNumber(99946545);
+        MediumTaskSolver solver = new MediumTaskSolver();
+        solver.mediumTaskSolver(task);
+
+        HeavyTask task = new HeavyTask();
+        HeavyTaskSolver solver = new HeavyTaskSolver();
+        task.setResponse(solver.fibonacci(task.getN()));
+        System.out.println(task.getResponse());
+        */
 	}
 }
