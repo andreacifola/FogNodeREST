@@ -3,6 +3,7 @@ package fognoderest;
 import fognoderest.entities.Node;
 import fognoderest.rest.RegisterService;
 import fognoderest.utils.JsonBuilder;
+import generator.FogNodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,7 +13,10 @@ public class FogNodeRestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
-		Node node = new Node(1,5,5,5,5,5);
+		Integer id = 0;
+		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
+		Node node = fogNodeGenerator.spawnFogNode(id);
+
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegisterService registerService = new RegisterService();
 		String payload = jsonBuilder.nodeToJson(node);
