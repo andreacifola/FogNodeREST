@@ -1,7 +1,7 @@
 package fognoderest.entities;
 
 
-public class Node {
+public class FogNode {
     private Integer id;
     private Integer ram;
     private Integer cpu;
@@ -9,14 +9,15 @@ public class Node {
     private Integer storage;
     private String type;
 
-    public Node() { }
+    public FogNode() { }
 
-    public Node(Integer id, Integer ram, Integer cpu, Integer battery, Integer storage) {
+    public FogNode(Integer id, Integer ram, Integer cpu, Integer battery, Integer storage, String type) {
         this.id = id;
         this.ram = ram;
         this.cpu = cpu;
         this.battery = battery;
         this.storage = storage;
+        this.type = type;
     }
 
     public Integer getId() {
