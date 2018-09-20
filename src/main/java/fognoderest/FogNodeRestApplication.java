@@ -1,6 +1,6 @@
 package fognoderest;
 
-import fognoderest.entities.Node;
+import fognoderest.entities.FogNode;
 import fognoderest.rest.RegisterService;
 import fognoderest.utils.JsonBuilder;
 import generator.FogNodeGenerator;
@@ -15,11 +15,11 @@ public class FogNodeRestApplication {
 
 		Integer id = 0;
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		Node node = fogNodeGenerator.spawnFogNode(id);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(id);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegisterService registerService = new RegisterService();
-		String payload = jsonBuilder.nodeToJson(node);
+		String payload = jsonBuilder.nodeToJson(fogNode);
 		String requestUrl="http://localhost:8080/registration";
 		String res = registerService.sendPostRequestForRegistration(requestUrl, payload);
 		System.out.println(res);
