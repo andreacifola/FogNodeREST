@@ -1,7 +1,11 @@
 package fognoderest.rest;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import fognoderest.entities.FogNode;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -9,7 +13,9 @@ import java.net.URL;
 
 public class RegisterService {
 
-    public String sendPostRequestForRegistration(String requestUrl, String payload) {
+    private ObjectMapper mapper = new ObjectMapper();
+
+    public FogNode sendPostRequestForRegistration(String requestUrl, String payload) throws IOException {
         StringBuffer jsonString = new StringBuffer();
         try {
             URL url = new URL(requestUrl);
@@ -33,6 +39,6 @@ public class RegisterService {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-        return jsonString.toString();
+        return mapper.readValue(jsonString.toString(), FogNode.class);
     }
 }

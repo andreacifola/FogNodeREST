@@ -6,11 +6,14 @@ import fognoderest.utils.JsonBuilder;
 import generator.FogNodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import javax.management.MalformedObjectNameException;
+import java.io.IOException;
+
 
 @SpringBootApplication
 public class FogNodeRestApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, MalformedObjectNameException {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
 		Integer id = 0;
@@ -21,7 +24,8 @@ public class FogNodeRestApplication {
 		RegisterService registerService = new RegisterService();
 		String payload = jsonBuilder.nodeToJson(fogNode);
 		String requestUrl="http://localhost:8080/registration";
-		String res = registerService.sendPostRequestForRegistration(requestUrl, payload);
-		System.out.println(res);
+		FogNode updatedFogNode = registerService.sendPostRequestForRegistration(requestUrl, payload);
+
+		System.out.println(payload);
 	}
 }

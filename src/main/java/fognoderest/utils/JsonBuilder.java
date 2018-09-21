@@ -8,7 +8,8 @@ public class JsonBuilder {
     public String nodeToJson(FogNode fogNode){
         String payload = "{ \"id\" :" + fogNode.getId() + ", \"ram\" : " + fogNode.getRam() + ", \"cpu\" : " +
                 fogNode.getCpu() + ", \"battery\" : " + fogNode.getBattery() + ", \"storage\" : " +
-                fogNode.getStorage() + ", \"type\" : " + "\"" + fogNode.getType() + "\"" + "}";
+                fogNode.getStorage() + ", \"type\" : " + "\"" + fogNode.getType() + "\"" +
+                ", \"port\" : " + "\"" + fogNode.getPort() + "\"" + "}";
         return payload;
     }
 }
