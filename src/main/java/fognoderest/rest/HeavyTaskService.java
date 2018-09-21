@@ -17,19 +17,15 @@ import java.io.IOException;
 public class HeavyTaskService {
 
     ResponseWriter responseWriter = new ResponseWriter();
-    /*@RequestMapping(path = "", method = RequestMethod.POST)
-    public ResponseEntity<HeavyTask> solveHeavyTask(@RequestBody HeavyTask heavyTask) {
-
-        //TODO GESTISCI LA RISOLUZIONE DEL TASK
-
-        return new ResponseEntity<>(heavyTask, HttpStatus.OK);
-    }*/
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException {
 
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("Task Received - NODE");
+
+        //TODO GESTISCI TASK
+        heavyTask.setResponse(2019L);
 
         return new ResponseEntity<>(heavyTask, HttpStatus.OK);
     }
