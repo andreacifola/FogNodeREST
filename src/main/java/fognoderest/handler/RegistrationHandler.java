@@ -1,4 +1,4 @@
-package fognoderest.rest;
+package fognoderest.handler;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,12 +11,12 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class RegisterService {
+public class RegistrationHandler {
 
     private ObjectMapper mapper = new ObjectMapper();
 
     public FogNode sendPostRequestForRegistration(String requestUrl, String payload) throws IOException {
-        StringBuffer jsonString = new StringBuffer();
+        StringBuilder jsonString = new StringBuilder();
         try {
             URL url = new URL(requestUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

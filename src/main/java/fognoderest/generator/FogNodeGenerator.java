@@ -1,4 +1,4 @@
-package generator;
+package fognoderest.generator;
 
 
 import fognoderest.entities.FogNode;
