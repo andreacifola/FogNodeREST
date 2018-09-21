@@ -1,6 +1,12 @@
 package fognoderest;
 
+import fognoderest.Solver.HeavyTaskSolver;
+import fognoderest.Solver.LightTaskSolver;
+import fognoderest.Solver.MediumTaskSolver;
 import fognoderest.entities.FogNode;
+import fognoderest.entities.HeavyTask;
+import fognoderest.entities.LightTask;
+import fognoderest.entities.MediumTask;
 import fognoderest.rest.RegisterService;
 import fognoderest.utils.JsonBuilder;
 import generator.FogNodeGenerator;

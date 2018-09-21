@@ -1,7 +1,7 @@
 package fognoderest.entities;
 
-public enum  Type {
+public enum Type {
     LIGHT,
     MEDIUM,
-    HEAVY;
+    HEAVY
 }

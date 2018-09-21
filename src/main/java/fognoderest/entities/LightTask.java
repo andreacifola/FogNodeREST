@@ -1,5 +1,6 @@
 package fognoderest.entities;
 
+
 public class LightTask extends Task {
 
     private String toEncrypt;
