@@ -18,17 +18,16 @@ public class LightTaskService {
 
     ResponseWriter responseWriter = new ResponseWriter();
 
-    /*@RequestMapping(path = "", method = RequestMethod.POST)
-    public ResponseEntity<LightTask> solveLightTask(@RequestBody LightTask lightTask) {
-
-        return new ResponseEntity<>(lightTask, HttpStatus.OK);
-    }*/
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<LightTask> solveLightTask(@RequestBody LightTask lightTask, HttpServletResponse response) throws IOException {
 
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("Task Received - NODE");
+
+        //TODO GESTISCI TASK
+
+        lightTask.setEncrypted("MODIFICATA");
 
         return new ResponseEntity<>(lightTask, HttpStatus.OK);
     }

@@ -18,19 +18,15 @@ public class MediumTaskService {
 
     ResponseWriter responseWriter = new ResponseWriter();
 
-    /*@RequestMapping(path = "", method = RequestMethod.POST)
-    public ResponseEntity<MediumTask> solveMediumTask(@RequestBody MediumTask mediumTask) {
-
-        //TODO GESTISCI LA RISOLUZIONE DEL TASK
-
-        return new ResponseEntity<>(mediumTask, HttpStatus.OK);
-    }*/
-
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<MediumTask> solveMediumTask(@RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException {
 
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("Task Received - NODE");
+
+        //TODO GESTISCI TASK
+        mediumTask.setNumber(20);
+        mediumTask.setTime(2011419);
 
         return new ResponseEntity<>(mediumTask, HttpStatus.OK);
     }
