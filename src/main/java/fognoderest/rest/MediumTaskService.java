@@ -1,7 +1,7 @@
 package fognoderest.rest;
 
-import fognoderest.Solver.MediumTaskSolver;
 import fognoderest.entities.MediumTask;
+import fognoderest.solver.MediumTaskSolver;
 import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +25,8 @@ public class MediumTaskService {
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("mediumTask Received - NODE");
 
-        //TODO GESTISCI TASK
-        //mediumTask.setNumber(20);
-        //mediumTask.setTime(2011419);
         MediumTaskSolver solver = new MediumTaskSolver();
-        solver.count(mediumTask);
+        mediumTask.setTime(solver.count(mediumTask));
         System.out.println("mediumTask Eseguito");
 
         return new ResponseEntity<>(mediumTask, HttpStatus.OK);

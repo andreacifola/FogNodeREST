@@ -1,11 +1,9 @@
 package fognoderest.rest;
 
-import fognoderest.Solver.HeavyTaskSolver;
-import fognoderest.Solver.LightTaskSolver;
-import fognoderest.Solver.MediumTaskSolver;
 import fognoderest.entities.HeavyTask;
 import fognoderest.entities.LightTask;
 import fognoderest.entities.MediumTask;
+import fognoderest.solver.LightTaskSolver;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

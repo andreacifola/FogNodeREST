@@ -1,4 +1,4 @@
-package fognoderest.Solver;
+package fognoderest.solver;
 
 import fognoderest.entities.LightTask;
 import fognoderest.utils.UtilityMD5;
@@ -6,8 +6,8 @@ import fognoderest.utils.UtilityMD5;
 
 public class LightTaskSolver {
 
-    public void hash(LightTask task){
+    public String hash(LightTask task){
         String encrypted = UtilityMD5.stringByHashingPassword(task.getToEncrypt());
-        task.setEncrypted(encrypted);
+        return encrypted;
     }
 }
