@@ -1,6 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.HeavyTask;
+import fognoderest.solver.HeavyTaskSolver;
 import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ import java.io.IOException;
 @RequestMapping(path = "heavy")
 public class HeavyTaskService {
 
+    HeavyTaskSolver heavyTaskSolver = new HeavyTaskSolver();
+
     ResponseWriter responseWriter = new ResponseWriter();
 
     @RequestMapping(path = "", method = RequestMethod.POST)
@@ -25,7 +28,9 @@ public class HeavyTaskService {
         System.out.println("Task Received - NODE");
 
         //TODO GESTISCI TASK
-        heavyTask.setResponse(2019L);
+        //heavyTask.setResponse(2019L);
+        heavyTask.setResponse(heavyTaskSolver.SolveHeavyTask());
+
 
         return new ResponseEntity<>(heavyTask, HttpStatus.OK);
     }
