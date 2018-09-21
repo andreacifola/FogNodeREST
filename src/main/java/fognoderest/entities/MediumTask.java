@@ -1,22 +1,23 @@
 package fognoderest.entities;
 
 public class MediumTask extends Task {
-    private int number;
-    private int time;
+
+    private int encrypt;
+    private long time;
 
     public int getNumber() {
-        return number;
+        return encrypt;
     }
 
     public void setNumber(int number) {
-        this.number = number;
+        this.encrypt = number;
     }
 
-    public int getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }

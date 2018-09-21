@@ -1,5 +1,6 @@
 package fognoderest;
 
+
 import fognoderest.entities.FogNode;
 import fognoderest.generator.FogNodeGenerator;
 import fognoderest.handler.RegistrationHandler;

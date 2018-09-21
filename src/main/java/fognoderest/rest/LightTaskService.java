@@ -1,6 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.LightTask;
+import fognoderest.solver.LightTaskSolver;
 import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +24,11 @@ public class LightTaskService {
     public ResponseEntity<LightTask> solveLightTask(@RequestBody LightTask lightTask, HttpServletResponse response) throws IOException {
 
         //responseWriter.sendResponse("Processing Task...",response);
-        System.out.println("Task Received - NODE");
+        System.out.println("lightTask Received - NODE");
 
-        //TODO GESTISCI TASK
-
-        lightTask.setEncrypted("MODIFICATA");
+        LightTaskSolver solver = new LightTaskSolver();
+        lightTask.setEncrypted(solver.hash(lightTask));
+        System.out.println("lightTask Eseguito");
 
         return new ResponseEntity<>(lightTask, HttpStatus.OK);
     }
