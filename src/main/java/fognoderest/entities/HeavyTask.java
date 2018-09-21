@@ -1,6 +1,6 @@
 package fognoderest.entities;
 
-public class HeavyTask extends Task {
+public class HeavyTask extends Task{
 
     private Long n = 45L;
     private Long response;
@@ -8,7 +8,10 @@ public class HeavyTask extends Task {
     public Long getResponse() {
         return response;
     }
+
     public void setResponse(Long response) {
         this.response = response;
     }
+
+    public Long getN(){ return n; }
 }

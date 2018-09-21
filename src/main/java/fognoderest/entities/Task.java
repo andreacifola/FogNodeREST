@@ -1,6 +1,7 @@
 package fognoderest.entities;
 
 public class Task {
+
     private int ID;
     private Type type;
 
