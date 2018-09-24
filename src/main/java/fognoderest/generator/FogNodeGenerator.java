@@ -6,9 +6,9 @@ import fognoderest.utils.RandomNumberGenerator;
 
 public class FogNodeGenerator {
 
-    public FogNode spawnFogNode(Integer id) {
+    public FogNode spawnFogNode(Integer id, Integer randomNumber) {
         FogNode fogNode = new FogNode();
-        Integer randomNumber = new RandomNumberGenerator().generateRandom(1,3);
+        //Integer randomNumber = new RandomNumberGenerator().generateRandom(1,3);
         if (randomNumber == 1)
             generateFogNodeParameters(fogNode, id, "LIGHT", 1, 3);
         else if (randomNumber == 2)

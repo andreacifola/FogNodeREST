@@ -20,7 +20,7 @@ public class FogNodeRestApplication {
 
 		Integer id = 0;
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(id);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(id, 3);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();
