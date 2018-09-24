@@ -1,4 +1,4 @@
-package fognoderest.solver;
+package fognoderest.tasksolver;
 
 import fognoderest.entities.MediumTask;
 
