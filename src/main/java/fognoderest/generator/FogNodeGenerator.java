@@ -2,7 +2,9 @@ package fognoderest.generator;
 
 
 import fognoderest.entities.FogNode;
+import fognoderest.utils.Coordinates;
 import fognoderest.utils.RandomNumberGenerator;
+import javafx.geometry.Point3D;
 
 public class FogNodeGenerator {
 
@@ -23,11 +25,23 @@ public class FogNodeGenerator {
         fogNode.setType(type);
         fogNode.setRam(new RandomNumberGenerator().generateRandom(start, end));
         fogNode.setCpu(new RandomNumberGenerator().generateRandom(start, end));
-        fogNode.setBattery(new RandomNumberGenerator().generateRandom(start*1000*100, end*1000*100));
+        fogNode.setBattery(new RandomNumberGenerator().generateRandom(start*1000, end*1000));
         fogNode.setStorage(new RandomNumberGenerator().generateRandom(start, end));
         fogNode.setCurrentRam(fogNode.getRam());
         fogNode.setCurrentCpu(fogNode.getCpu());
         fogNode.setCurrentBattery(fogNode.getBattery().floatValue());
         fogNode.setCurrentStorage(fogNode.getStorage());
+
+        //It's approximatively the middle Italy
+        Double latitude = new RandomNumberGenerator().generateRandom(41.5, 42.5);
+        Double longitude = new RandomNumberGenerator().generateRandom(12.6, 13.6);
+        fogNode.setLatitude(latitude);
+        fogNode.setLongitude(longitude);
+
+        Integer randomCurrentSupplied = new RandomNumberGenerator().generateRandom(1,2);
+        if (randomCurrentSupplied == 1)
+            fogNode.setCurrentSupplied(true);
+        else
+            fogNode.setCurrentSupplied(false);
     }
 }

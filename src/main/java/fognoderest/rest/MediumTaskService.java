@@ -23,7 +23,7 @@ public class MediumTaskService {
     public ResponseEntity<MediumTask> solveMediumTask(@RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException {
 
         //responseWriter.sendResponse("Processing Task...",response);
-        System.out.println("mediumTask Received - NODE");
+        System.out.println("mediumTask Received - NODE" + mediumTask.getID());
 
         MediumTaskSolver solver = new MediumTaskSolver();
         mediumTask.setTime(solver.count(mediumTask));
