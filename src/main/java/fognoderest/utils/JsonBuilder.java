@@ -13,7 +13,7 @@ public class JsonBuilder {
                 fogNode.getCurrentCpu() + ", \"currentBattery\" : " + fogNode.getCurrentBattery() +
                 ", \"currentStorage\" : " + fogNode.getCurrentStorage() + ", \"latitude\" : " +
                 fogNode.getLatitude() + ", \"longitude\" : " + fogNode.getLongitude() +
-                ", \"isElectricitySupplied\" : \"" + fogNode.getElectricitySupplied() + "\"}";
+                ", \"prova\" : \"" + fogNode.getProva() + "\"}";
         return payload;
     }
 }

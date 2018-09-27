@@ -38,8 +38,8 @@ public class FogNodeGenerator {
 
         Integer randomCurrentSupplied = new RandomNumberGenerator().generateRandom(1,2);
         if (randomCurrentSupplied == 1)
-            fogNode.setElectricitySupplied(true);
+            fogNode.setProva("yes");
         else
-            fogNode.setElectricitySupplied(false);
+            fogNode.setProva("no");
     }
 }

@@ -33,6 +33,6 @@ public class FogNodeRestApplication {
 				fogNode.getCpu() + "; RAM = " + fogNode.getRam() + "; battery = " + fogNode.getBattery() +
 				"; storage = " + fogNode.getStorage() + "; port = " + updatedFogNode.getPort() +
 				"; latitude = " + fogNode.getLatitude() + "; longitude = " + fogNode.getLongitude() +
-		"; isElectricitySupplied = " + fogNode.getElectricitySupplied());
+		"; isPowerSupplied = " + fogNode.getProva());
 	}
 }
