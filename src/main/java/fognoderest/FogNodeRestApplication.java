@@ -20,7 +20,7 @@ public class FogNodeRestApplication {
 
 		Integer id = 0;
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(id, 2);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(id, 1);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();
@@ -29,9 +29,10 @@ public class FogNodeRestApplication {
 		FogNode updatedFogNode = registrationHandler.sendPostRequestForRegistration(requestUrl, payload);
 		fogNode.setId(updatedFogNode.getId());
 		fogNode.setPort(updatedFogNode.getPort());
-		System.out.println("FogNode: id = " + fogNode.getId() + "; type = " + fogNode.getType() + "; CPU = " +
+		System.out.println("FogNodeSide: id = " + fogNode.getId() + "; type = " + fogNode.getType() + "; CPU = " +
 				fogNode.getCpu() + "; RAM = " + fogNode.getRam() + "; battery = " + fogNode.getBattery() +
 				"; storage = " + fogNode.getStorage() + "; port = " + updatedFogNode.getPort() +
-				"; latitude = " + fogNode.getLatitude() + "longitude = " + fogNode.getLongitude());
+				"; latitude = " + fogNode.getLatitude() + "; longitude = " + fogNode.getLongitude() +
+		"; isElectricitySupplied = " + fogNode.getElectricitySupplied());
 	}
 }

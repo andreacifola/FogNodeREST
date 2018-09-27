@@ -12,7 +12,8 @@ public class JsonBuilder {
                 "\"" + fogNode.getPort() + "\", \"currentRam\" : " + fogNode.getCurrentRam() + ", \"currentCpu\" : " +
                 fogNode.getCurrentCpu() + ", \"currentBattery\" : " + fogNode.getCurrentBattery() +
                 ", \"currentStorage\" : " + fogNode.getCurrentStorage() + ", \"latitude\" : " +
-                fogNode.getLatitude() + ", \"longitude\" : " + fogNode.getLongitude() + "}";
+                fogNode.getLatitude() + ", \"longitude\" : " + fogNode.getLongitude() +
+                ", \"isElectricitySupplied\" : \"" + fogNode.getElectricitySupplied() + "\"}";
         return payload;
     }
 }

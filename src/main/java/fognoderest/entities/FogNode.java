@@ -14,7 +14,7 @@ public class FogNode {
     private Integer currentStorage;
     private Double latitude;
     private Double longitude;
-    private Boolean isCurrentSupplied;
+    private Boolean isElectricitySupplied;
 
     public FogNode() { }
 
@@ -122,11 +122,11 @@ public class FogNode {
         this.longitude = longitude;
     }
 
-    public Boolean getCurrentSupplied() {
-        return isCurrentSupplied;
+    public Boolean getElectricitySupplied() {
+        return isElectricitySupplied;
     }
 
-    public void setCurrentSupplied(Boolean currentSupplied) {
-        isCurrentSupplied = currentSupplied;
+    public void setElectricitySupplied(Boolean currentSupplied) {
+        isElectricitySupplied = currentSupplied;
     }
 }

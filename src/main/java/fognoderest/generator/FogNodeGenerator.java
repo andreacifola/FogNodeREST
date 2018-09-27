@@ -2,9 +2,7 @@ package fognoderest.generator;
 
 
 import fognoderest.entities.FogNode;
-import fognoderest.utils.Coordinates;
 import fognoderest.utils.RandomNumberGenerator;
-import javafx.geometry.Point3D;
 
 public class FogNodeGenerator {
 
@@ -40,8 +38,8 @@ public class FogNodeGenerator {
 
         Integer randomCurrentSupplied = new RandomNumberGenerator().generateRandom(1,2);
         if (randomCurrentSupplied == 1)
-            fogNode.setCurrentSupplied(true);
+            fogNode.setElectricitySupplied(true);
         else
-            fogNode.setCurrentSupplied(false);
+            fogNode.setElectricitySupplied(false);
     }
 }
