@@ -1,4 +1,4 @@
-package fognoderest.tasksolver;
+package fognoderest.solver;
 
 import fognoderest.entities.LightTask;
 import fognoderest.utils.UtilityMD5;

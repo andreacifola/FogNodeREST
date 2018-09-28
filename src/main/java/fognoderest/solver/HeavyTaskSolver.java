@@ -1,4 +1,4 @@
-package fognoderest.tasksolver;
+package fognoderest.solver;
 
 public class HeavyTaskSolver {
 

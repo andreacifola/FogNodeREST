@@ -14,8 +14,7 @@ public class FogNode {
     private Integer currentStorage;
     private Double latitude;
     private Double longitude;
-    //"prova" checks if it is power supplied (dà errore se mettiamo un altro nomi all'infuori di prova
-    private String prova;
+    private String powered;
 
     public FogNode() { }
 
@@ -123,11 +122,11 @@ public class FogNode {
         this.longitude = longitude;
     }
 
-    public String getProva() {
-        return prova;
+    public String getPowered() {
+        return powered;
     }
 
-    public void setProva(String prova) {
-        this.prova = prova;
+    public void setPowered(String powered) {
+        this.powered = powered;
     }
 }

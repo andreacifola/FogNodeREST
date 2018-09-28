@@ -1,7 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.MediumTask;
-import fognoderest.tasksolver.MediumTaskSolver;
+import fognoderest.solver.MediumTaskSolver;
 import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
