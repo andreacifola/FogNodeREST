@@ -18,9 +18,8 @@ public class FogNodeRestApplication {
 	public static void main(String[] args) throws IOException, MalformedObjectNameException {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
-		Integer id = 0;
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(id, 1);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(1);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();

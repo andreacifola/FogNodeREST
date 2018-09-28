@@ -6,20 +6,19 @@ import fognoderest.utils.RandomNumberGenerator;
 
 public class FogNodeGenerator {
 
-    public FogNode spawnFogNode(Integer id, Integer randomNumber) {
+    public FogNode spawnFogNode(Integer randomNumber) {
         FogNode fogNode = new FogNode();
         //Integer randomNumber = new RandomNumberGenerator().generateRandom(1,3);
         if (randomNumber == 1)
-            generateFogNodeParameters(fogNode, id, "LIGHT", 11, 39);
+            generateFogNodeParameters(fogNode, "LIGHT", 11, 39);
         else if (randomNumber == 2)
-            generateFogNodeParameters(fogNode, id, "MEDIUM", 40, 79);
+            generateFogNodeParameters(fogNode, "MEDIUM", 40, 79);
         else
-            generateFogNodeParameters(fogNode, id, "HEAVY", 80, 100);
+            generateFogNodeParameters(fogNode, "HEAVY", 80, 100);
         return fogNode;
     }
 
-    private void generateFogNodeParameters(FogNode fogNode, Integer id, String type, Integer start, Integer end) {
-        fogNode.setId(id);
+    private void generateFogNodeParameters(FogNode fogNode, String type, Integer start, Integer end) {
         fogNode.setType(type);
         fogNode.setRam(new RandomNumberGenerator().generateRandom(start, end));
         fogNode.setCpu(new RandomNumberGenerator().generateRandom(start, end));

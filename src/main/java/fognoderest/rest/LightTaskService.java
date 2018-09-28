@@ -17,6 +17,7 @@ import java.io.IOException;
 @RequestMapping(path = "light")
 public class LightTaskService {
 
+    //TODO cancellare questa classe?
     ResponseWriter responseWriter = new ResponseWriter();
 
 
