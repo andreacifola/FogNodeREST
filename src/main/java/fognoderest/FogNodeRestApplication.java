@@ -19,7 +19,7 @@ public class FogNodeRestApplication {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(1);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(3);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();
