@@ -3,6 +3,7 @@ package fognoderest.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fognoderest.entities.FogNode;
+import fognoderest.utils.SendPostRequest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,29 +17,8 @@ public class RegistrationHandler {
     private ObjectMapper mapper = new ObjectMapper();
 
     public FogNode sendPostRequestForRegistration(String requestUrl, String payload) throws IOException {
-        StringBuilder jsonString = new StringBuilder();
-        try {
-            URL url = new URL(requestUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
-            writer.write(payload);
-            writer.close();
-            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String line;
-            while ((line = br.readLine()) != null) {
-                jsonString.append(line);
-            }
-            br.close();
-            connection.disconnect();
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
+        SendPostRequest sendPostRequest = new SendPostRequest();
+        StringBuilder jsonString = sendPostRequest.sendPostRequest(requestUrl, payload);
         return mapper.readValue(jsonString.toString(), FogNode.class);
     }
 }
