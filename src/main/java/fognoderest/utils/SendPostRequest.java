@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class SendPostRequest {
 
-    public StringBuilder sendPostRequest(String requestUrl, String payload) {
+    public StringBuilder postRequest(String requestUrl, String payload) {
         StringBuilder jsonString = new StringBuilder();
         try {
             URL url = new URL(requestUrl);

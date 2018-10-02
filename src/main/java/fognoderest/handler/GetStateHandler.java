@@ -19,14 +19,14 @@ public class GetStateHandler {
 
     private String mediumTaskStateToJson(Integer taskId, Integer state, Long currentTime) {
         String payload = "{ \"mediumTaskId\" : " + taskId + ", \"state\" : " + state +
-                "\"currentTime\" : " + currentTime + "}";
+                ", \"currentTime\" : " + currentTime + "}";
         return payload;
     }
 
-    private MediumTaskState sendPostRequestForTaskState(String requestUrl, String payload) throws IOException {
+    private void sendPostRequestForTaskState(String requestUrl, String payload) throws IOException {
         SendPostRequest sendPostRequest = new SendPostRequest();
-        StringBuilder jsonString = sendPostRequest.sendPostRequest(requestUrl, payload);
-        return mapper.readValue(jsonString.toString(), MediumTaskState.class);
+        StringBuilder jsonString = sendPostRequest.postRequest(requestUrl, payload);
+        return;
     }
 
 
