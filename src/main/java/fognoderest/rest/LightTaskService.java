@@ -28,7 +28,7 @@ public class LightTaskService {
         System.out.println("lightTask Received - NODE");
 
         LightTaskSolver solver = new LightTaskSolver();
-        lightTask.setEncrypted(solver.hash(lightTask));
+        lightTask.setEncrypted(solver.CaesarCode(lightTask));
         System.out.println("lightTask Eseguito");
 
         return new ResponseEntity<>(lightTask, HttpStatus.OK);
