@@ -2,7 +2,6 @@ package fognoderest.rest;
 
 import fognoderest.entities.HeavyTask;
 import fognoderest.solver.HeavyTaskSolver;
-import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,21 +16,15 @@ import java.io.IOException;
 @RequestMapping(path = "heavy")
 public class HeavyTaskService {
 
-    ResponseWriter responseWriter = new ResponseWriter();
-
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException {
 
-        //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("heavyTask Received - NODE");
 
         HeavyTaskSolver solver = new HeavyTaskSolver();
         heavyTask.setResponse(solver.fibonacci(heavyTask.getN()));
         System.out.println("heavyTask Eseguito");
 
-
         return new ResponseEntity<>(heavyTask, HttpStatus.OK);
     }
-
-
 }
