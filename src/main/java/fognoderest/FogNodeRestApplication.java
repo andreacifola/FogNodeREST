@@ -5,9 +5,9 @@ import fognoderest.entities.FogNode;
 import fognoderest.generator.FogNodeGenerator;
 import fognoderest.handler.RegistrationHandler;
 import fognoderest.utils.JsonBuilder;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import javax.management.MalformedObjectNameException;
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class FogNodeRestApplication {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(2);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(3);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();

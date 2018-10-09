@@ -13,6 +13,6 @@ public class ActiveFogNodeService {
     @RequestMapping(path = "", method = RequestMethod.GET)
     public ResponseEntity<String> fogNodeRegistration() {
 
-        return new ResponseEntity<String>("ACK", HttpStatus.OK);
+        return new ResponseEntity<>("ACK", HttpStatus.OK);
     }
 }

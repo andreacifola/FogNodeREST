@@ -11,7 +11,7 @@ public class MediumTaskSolver {
         Long start = System.currentTimeMillis();
         GetStateHandler getStateHandler = new GetStateHandler();
 
-        for (Integer i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             if (i%1000 == 0 && i != 0)
                 getStateHandler.sendMediumTaskState(i, System.currentTimeMillis()-start, task.getID());
 
@@ -19,7 +19,7 @@ public class MediumTaskSolver {
                 break;
         }
         Long time = System.currentTimeMillis() - start;
-        System.out.println("mediumTask completato in" + time);
+        System.out.println("mediumTask completato in " + time + " msec");
         return time;
     }
 }
