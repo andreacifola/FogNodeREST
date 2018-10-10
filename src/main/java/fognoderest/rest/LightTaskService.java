@@ -1,6 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.LightTask;
+import fognoderest.entities.LightTaskState;
 import fognoderest.solver.LightTaskSolver;
 import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,7 @@ import java.io.IOException;
 @RequestMapping(path = "light")
 public class LightTaskService {
 
-    //TODO cancellare questa classe?
     ResponseWriter responseWriter = new ResponseWriter();
-
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<LightTask> solveLightTask(@RequestBody LightTask lightTask, HttpServletResponse response) throws IOException {

@@ -1,5 +1,7 @@
 package fognoderest.entities;
 
+import java.util.ArrayList;
+
 public class FogNode {
     private Integer id;
     private Integer ram;

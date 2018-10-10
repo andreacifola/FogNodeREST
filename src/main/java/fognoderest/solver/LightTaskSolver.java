@@ -17,8 +17,9 @@ public class LightTaskSolver {
             char letter = toEncrypt.charAt(i);
             if (Character.isLetter(letter)) {
                 letter += 3;
-                encrypted += letter;
             }
+            encrypted += letter;
+
             getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID());
             if (i % 100 == 0 && i != 0) {
                 //getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID());
