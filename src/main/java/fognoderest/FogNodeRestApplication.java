@@ -5,17 +5,18 @@ import fognoderest.entities.FogNode;
 import fognoderest.generator.FogNodeGenerator;
 import fognoderest.handler.RegistrationHandler;
 import fognoderest.utils.JsonBuilder;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import javax.management.MalformedObjectNameException;
 import java.io.IOException;
 
 
 @SpringBootApplication
 public class FogNodeRestApplication {
 
-	public static void main(String[] args) throws IOException {
-        SpringApplication.run(FogNodeRestApplication.class, args);
+	public static void main(String[] args) throws IOException, MalformedObjectNameException {
+		SpringApplication.run(FogNodeRestApplication.class, args);
 
         FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
 		FogNode fogNode = fogNodeGenerator.spawnFogNode(2);
@@ -32,6 +33,5 @@ public class FogNodeRestApplication {
 				"; storage = " + fogNode.getStorage() + "; port = " + updatedFogNode.getPort() +
 				"; latitude = " + fogNode.getLatitude() + "; longitude = " + fogNode.getLongitude() +
 				"; powered = " + fogNode.getPowered());
-
 	}
 }

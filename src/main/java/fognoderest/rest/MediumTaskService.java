@@ -2,7 +2,6 @@ package fognoderest.rest;
 
 import fognoderest.entities.MediumTask;
 import fognoderest.solver.MediumTaskSolver;
-import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,12 +16,9 @@ import java.io.IOException;
 @RequestMapping(path = "medium")
 public class MediumTaskService {
 
-    ResponseWriter responseWriter = new ResponseWriter();
-
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<MediumTask> solveMediumTask(@RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException {
 
-        //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("mediumTask Received - NODE" + mediumTask.getID());
 
         MediumTaskSolver solver = new MediumTaskSolver();

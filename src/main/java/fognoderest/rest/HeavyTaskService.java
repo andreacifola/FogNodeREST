@@ -2,7 +2,6 @@ package fognoderest.rest;
 
 import fognoderest.entities.HeavyTask;
 import fognoderest.solver.HeavyTaskSolver;
-import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +16,6 @@ import java.io.IOException;
 @RequestMapping(path = "heavy")
 public class HeavyTaskService {
 
-    ResponseWriter responseWriter = new ResponseWriter();
-
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException {
 
@@ -26,12 +23,21 @@ public class HeavyTaskService {
         System.out.println("heavyTask Received - NODE");
 
         HeavyTaskSolver solver = new HeavyTaskSolver();
-        heavyTask.setResponse(solver.fibonacci(heavyTask.getN()));
+
+        if (heavyTask.getLast()==0){
+            // inizia il job da 0
+
+            heavyTask.setResponse(solver.factorial(heavyTask.getN()));
+        }else{
+            //il job è stato precedentemente interrotto quindi riprendi il calcolo da last
+
+            heavyTask.setResponse(solver.factorial(heavyTask.getN(),heavyTask.getPartial(),heavyTask.getLast()));
+        }
+
         System.out.println("heavyTask Eseguito");
 
 
         return new ResponseEntity<>(heavyTask, HttpStatus.OK);
+
     }
-
-
 }

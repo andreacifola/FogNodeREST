@@ -9,6 +9,12 @@ import java.net.URL;
 
 public class SendPostRequest {
 
+    /**
+     * This is a standard method to send the POST to the server
+     *
+     * @param requestUrl is the url to reach the server
+     * @param payload    is te JSON object
+     */
     public StringBuilder postRequest(String requestUrl, String payload) {
         StringBuilder jsonString = new StringBuilder();
         try {

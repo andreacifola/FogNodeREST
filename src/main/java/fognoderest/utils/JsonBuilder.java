@@ -5,6 +5,12 @@ import fognoderest.entities.FogNode;
 
 public class JsonBuilder {
 
+    /**
+     * This method creates the Json to send to the middleware with all the characteristics of the fogNode
+     *
+     * @param fogNode the fogNode whose characteristics have to be sent
+     * @return the strin that represents the Json object
+     */
     public String nodeToJson(FogNode fogNode){
         String payload = "{ \"id\" : " + fogNode.getId() + ", \"ram\" : " + fogNode.getRam() + ", \"cpu\" : " +
                 fogNode.getCpu() + ", \"battery\" : " + fogNode.getBattery() + ", \"storage\" : " +
