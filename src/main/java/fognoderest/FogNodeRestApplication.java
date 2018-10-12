@@ -15,11 +15,11 @@ import java.io.IOException;
 @SpringBootApplication
 public class FogNodeRestApplication {
 
-	public static void main(String[] args) throws IOException, MalformedObjectNameException {
+	public static void main(String[] args) throws IOException, MalformedObjectNameException, InterruptedException {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(3);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(2);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();
