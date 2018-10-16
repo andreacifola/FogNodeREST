@@ -1,7 +1,5 @@
 package fognoderest.entities;
 
-import java.util.ArrayList;
-
 public class FogNode {
     private Integer id;
     private Integer ram;
@@ -19,6 +17,25 @@ public class FogNode {
     private String powered;
 
     public FogNode() { }
+
+    public FogNode(Integer id, Integer ram, Integer cpu, Integer battery, Integer storage, String type,
+                   String port, Integer currentRam, Integer currentCpu, Float currentBattery,
+                   Integer currentStorage, Double latitude, Double longitude, String powered) {
+        this.id = id;
+        this.ram = ram;
+        this.cpu = cpu;
+        this.battery = battery;
+        this.storage = storage;
+        this.type = type;
+        this.port = port;
+        this.currentRam = currentRam;
+        this.currentCpu = currentCpu;
+        this.currentBattery = currentBattery;
+        this.currentStorage = currentStorage;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.powered = powered;
+    }
 
     public Integer getId() {
         return id;

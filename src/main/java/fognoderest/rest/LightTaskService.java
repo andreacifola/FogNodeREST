@@ -1,9 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.LightTask;
-import fognoderest.entities.LightTaskState;
 import fognoderest.solver.LightTaskSolver;
-import fognoderest.utils.ResponseWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,19 +16,19 @@ import java.io.IOException;
 @RequestMapping(path = "light")
 public class LightTaskService {
 
-    ResponseWriter responseWriter = new ResponseWriter();
+    //ResponseWriter responseWriter = new ResponseWriter();
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<LightTask> solveLightTask(@RequestBody LightTask lightTask, HttpServletResponse response) throws IOException {
-
+        //TODO gestire concorrenza
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("lightTask Received - NODE");
 
         LightTaskSolver solver = new LightTaskSolver();
-        lightTask.setEncrypted(solver.CaesarCode(lightTask));
+        lightTask.setEncrypted(solver.CaesarCode(lightTask, lightTask.getLoopCount()));
+
         System.out.println("lightTask Eseguito");
 
         return new ResponseEntity<>(lightTask, HttpStatus.OK);
     }
-
 }

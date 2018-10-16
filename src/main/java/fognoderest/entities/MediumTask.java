@@ -2,16 +2,17 @@ package fognoderest.entities;
 
 public class MediumTask extends Task {
 
-    private int encrypt;
+    private int number;
     private long time;
     private Integer state;
+    private Long currentTime;
 
     public int getNumber() {
-        return encrypt;
+        return number;
     }
 
     public void setNumber(int number) {
-        this.encrypt = number;
+        this.number = number;
     }
 
     public long getTime() {
@@ -23,4 +24,8 @@ public class MediumTask extends Task {
     public Integer getState() { return state; }
 
     public void setState(Integer state) { this.state = state; }
+
+    public Long getCurrentTime() { return currentTime; }
+
+    public void setCurrentTime(Long currentTime) { this.currentTime = currentTime; }
 }

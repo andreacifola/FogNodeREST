@@ -1,30 +1,28 @@
 package fognoderest;
 
-
 import fognoderest.entities.FogNode;
 import fognoderest.generator.FogNodeGenerator;
 import fognoderest.handler.RegistrationHandler;
 import fognoderest.utils.JsonBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.management.MalformedObjectNameException;
 import java.io.IOException;
-
 
 @SpringBootApplication
 public class FogNodeRestApplication {
 
-	public static void main(String[] args) throws IOException, MalformedObjectNameException {
-		SpringApplication.run(FogNodeRestApplication.class, args);
+	public static void main(String[] args) throws IOException {
+        SpringApplication.run(FogNodeRestApplication.class, args);
 
         FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(2);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(3);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();
 		String payload = jsonBuilder.nodeToJson(fogNode);
 		String requestUrl="http://localhost:8080/registration";
+        //fogNode = registrationHandler.sendPostRequestForRegistration(requestUrl, payload);
+
 		FogNode updatedFogNode = registrationHandler.sendPostRequestForRegistration(requestUrl, payload);
 		fogNode.setId(updatedFogNode.getId());
 		fogNode.setPort(updatedFogNode.getPort());

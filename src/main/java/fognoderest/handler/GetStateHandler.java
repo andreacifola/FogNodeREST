@@ -1,12 +1,13 @@
 package fognoderest.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fognoderest.entities.HeavyTask;
+import fognoderest.entities.HeavyTaskState;
 import fognoderest.entities.LightTaskState;
 import fognoderest.entities.MediumTaskState;
 import fognoderest.utils.SendPostRequest;
-
 import java.io.IOException;
-
+import java.math.BigInteger;
 
 public class GetStateHandler {
 
@@ -75,5 +76,37 @@ public class GetStateHandler {
     private MediumTaskState sendPostRequestForMediumTaskState(String requestUrl, String payload) throws IOException {
         StringBuilder jsonString = sendPostRequest.postRequest(requestUrl, payload);
         return mapper.readValue(jsonString.toString(), MediumTaskState.class);
+    }
+
+    /**
+     * This method sends the state of a heavy task to the middleware
+     *
+     * @param taskId
+     * @param partial
+     * @param last
+     * @throws IOException because of the POST
+     */
+    public void sendHeavyTaskState(Integer taskId, BigInteger partial, int last) throws IOException {
+        String payload = heavyTaskStateToJson(taskId, partial, last);
+        String requestUrl = "http://localhost:8080/state/heavy";
+        sendPostRequestForHeavyTaskState(requestUrl, payload);
+    }
+
+    /**
+     * This method creates the string that represents the JSON object of a heavy task state
+     * @param taskId
+     * @param partial
+     * @param last
+     * @return the string that represents the JSON object of a heavy task state
+     */
+    private String heavyTaskStateToJson(Integer taskId, BigInteger partial, int last) {
+        String payload = "{ \"heavyTaskId\" : " + taskId + ", \"partial\" : " + partial +
+                ", \"last\" : \"" + last + "\"}";
+        return payload;
+    }
+
+    private HeavyTaskState sendPostRequestForHeavyTaskState(String requestUrl, String payload) throws IOException {
+        StringBuilder jsonString = sendPostRequest.postRequest(requestUrl, payload);
+        return mapper.readValue(jsonString.toString(), HeavyTaskState.class);
     }
 }

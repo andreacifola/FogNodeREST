@@ -18,26 +18,27 @@ public class HeavyTaskService {
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException {
-
+        //TODO gestire concorrenza
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("heavyTask Received - NODE");
 
         HeavyTaskSolver solver = new HeavyTaskSolver();
-
+        /*
         if (heavyTask.getLast()==0){
             // inizia il job da 0
 
             heavyTask.setResponse(solver.factorial(heavyTask.getN()));
+            System.out.println(heavyTask.getResponse());
         }else{
             //il job è stato precedentemente interrotto quindi riprendi il calcolo da last
 
             heavyTask.setResponse(solver.factorial(heavyTask.getN(),heavyTask.getPartial(),heavyTask.getLast()));
         }
+        */
+        heavyTask.setResponse(solver.factorial(heavyTask, heavyTask.getN(), heavyTask.getPartial(), heavyTask.getLast()));
 
         System.out.println("heavyTask Eseguito");
 
-
         return new ResponseEntity<>(heavyTask, HttpStatus.OK);
-
     }
 }

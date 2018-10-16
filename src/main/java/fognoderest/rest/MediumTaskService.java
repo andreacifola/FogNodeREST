@@ -12,17 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 @RestController
 @RequestMapping(path = "medium")
 public class MediumTaskService {
+    //ResponseWriter responseWriter = new ResponseWriter();
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<MediumTask> solveMediumTask(@RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException {
+        //TODO gestire concorrenza
+        //responseWriter.sendResponse("Processing Task...",response);
 
-        System.out.println("mediumTask Received - NODE" + mediumTask.getID());
+        System.out.println("mediumTask Received - NODE");
 
         MediumTaskSolver solver = new MediumTaskSolver();
-        mediumTask.setTime(solver.count(mediumTask));
+        mediumTask.setTime(solver.count(mediumTask, mediumTask.getState(), mediumTask.getCurrentTime()));
+
         System.out.println("mediumTask Eseguito");
 
         return new ResponseEntity<>(mediumTask, HttpStatus.OK);

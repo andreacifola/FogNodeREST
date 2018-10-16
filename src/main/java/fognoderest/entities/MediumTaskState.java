@@ -7,13 +7,12 @@ public class MediumTaskState {
     private Integer state;
     private Integer currentTime;
 
+    public MediumTaskState() {}
+
     public MediumTaskState(Integer taskId, Integer state, Integer currentTime) {
         this.taskId = taskId;
         this.state = state;
         this.currentTime = currentTime;
-    }
-
-    public MediumTaskState() {
     }
 
     public Integer getTaskId() {

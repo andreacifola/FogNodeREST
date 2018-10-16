@@ -8,28 +8,37 @@ import java.io.IOException;
 
 public class LightTaskSolver {
 
-    GetStateHandler getStateHandler = new GetStateHandler();
-
-    public String CaesarCode(LightTask lightTask) throws IOException {
-        String encrypted = "";
+    /*
+     * Questa funzione cifra una stringa con il "cifrario di Cesare". Trasmette come stato la cifra i-esima
+     * che ha cifrato. Il ciclo di cifratura inizierà da tale indice +1, per tale motivo ii lightTask devono
+     * essere inizializzati con stato pari a -1
+     */
+    public String CaesarCode(LightTask lightTask, Integer loopCount) throws IOException {
+        GetStateHandler getStateHandler = new GetStateHandler();
         String toEncrypt = lightTask.getToEncrypt();
-        for (int i = 0; i < toEncrypt.length(); i++) {
+        String encrypted;
+
+        if(loopCount == -1)
+            encrypted = "";
+        else
+            encrypted = lightTask.getEncrypted();
+
+        int i;
+        for (i = loopCount+1; i < toEncrypt.length(); i++) {
             char letter = toEncrypt.charAt(i);
             if (Character.isLetter(letter)) {
                 letter += 3;
             }
             encrypted += letter;
 
-            getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID());
+            //trasmetto lo stato al middleware
             if (i % 100 == 0 && i != 0) {
-                //getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID());
+                getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID());
             }
+
+            if(i == toEncrypt.length()-1)
+                System.out.println(encrypted);
         }
         return encrypted;
     }
-
-    /*public String hash(LightTask task){
-        String encrypted = UtilityMD5.stringByHashingPassword(task.getToEncrypt());
-        return encrypted;
-    }*/
 }

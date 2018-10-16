@@ -1,6 +1,5 @@
 package fognoderest.generator;
 
-
 import fognoderest.entities.FogNode;
 import fognoderest.utils.RandomNumberGenerator;
 
