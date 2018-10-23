@@ -21,7 +21,6 @@ public class FogNodeRestApplication {
 		RegistrationHandler registrationHandler = new RegistrationHandler();
 		String payload = jsonBuilder.nodeToJson(fogNode);
 		String requestUrl="http://localhost:8080/registration";
-        //fogNode = registrationHandler.sendPostRequestForRegistration(requestUrl, payload);
 
 		FogNode updatedFogNode = registrationHandler.sendPostRequestForRegistration(requestUrl, payload);
 		fogNode.setId(updatedFogNode.getId());

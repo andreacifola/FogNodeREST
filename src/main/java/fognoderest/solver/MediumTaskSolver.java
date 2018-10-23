@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class MediumTaskSolver {
 
-    public long count(MediumTask mediumTask, Integer state, Long currentTime) throws IOException {
+    public long count(MediumTask mediumTask, Integer state, Long currentTime, int midd_id) throws IOException {
         GetStateHandler getStateHandler = new GetStateHandler();
         int i;
 
@@ -18,7 +18,7 @@ public class MediumTaskSolver {
 
         for (i = state+1; i < 1000000; i++) {
             if (i%1000 == 0 && i != 0)
-                getStateHandler.sendMediumTaskState(i, System.currentTimeMillis()-start, mediumTask.getID());
+                getStateHandler.sendMediumTaskState(i, System.currentTimeMillis()-start, mediumTask.getID(), midd_id);
 
             if (mediumTask.getNumber() == i)
                 break;

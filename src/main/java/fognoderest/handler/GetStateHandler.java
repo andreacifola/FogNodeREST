@@ -22,9 +22,9 @@ public class GetStateHandler {
      * @param taskId    is the id of the task of which we send the task
      * @throws IOException because of the POST
      */
-    public void sendLightTaskState(Integer loopCount, String encrypted, Integer taskId) throws IOException {
+    public void sendLightTaskState(Integer loopCount, String encrypted, Integer taskId, int id) throws IOException {
         String payload = lightTaskStateToJson(loopCount, encrypted, taskId);
-        String requestUrl = "http://localhost:8080/state/light";
+        String requestUrl = "http://localhost:8080/state/light/" + id;
         sendPostRequestForLightTaskState(requestUrl, payload);
     }
 
@@ -53,11 +53,10 @@ public class GetStateHandler {
      * @param taskId is the id of the task of which we send the task
      * @throws IOException because of the POST
      */
-    public void sendMediumTaskState(Integer state, Long currentTime, Integer taskId) throws IOException {
+    public void sendMediumTaskState(Integer state, Long currentTime, Integer taskId, int id) throws IOException {
         String payload = mediumTaskStateToJson(taskId, state, currentTime);
-        String requestUrl = "http://localhost:8080/state/medium";
+        String requestUrl = "http://localhost:8080/state/medium/"+id;
         sendPostRequestForMediumTaskState(requestUrl, payload);
-
     }
 
     /**
@@ -86,9 +85,9 @@ public class GetStateHandler {
      * @param last
      * @throws IOException because of the POST
      */
-    public void sendHeavyTaskState(Integer taskId, BigInteger partial, int last) throws IOException {
+    public void sendHeavyTaskState(Integer taskId, BigInteger partial, int last, int id) throws IOException {
         String payload = heavyTaskStateToJson(taskId, partial, last);
-        String requestUrl = "http://localhost:8080/state/heavy";
+        String requestUrl = "http://localhost:8080/state/heavy/"+id;
         sendPostRequestForHeavyTaskState(requestUrl, payload);
     }
 

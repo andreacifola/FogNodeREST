@@ -13,7 +13,7 @@ public class LightTaskSolver {
      * che ha cifrato. Il ciclo di cifratura inizierà da tale indice +1, per tale motivo ii lightTask devono
      * essere inizializzati con stato pari a -1
      */
-    public String CaesarCode(LightTask lightTask, Integer loopCount) throws IOException {
+    public String CaesarCode(LightTask lightTask, Integer loopCount, int midd_id) throws IOException {
         GetStateHandler getStateHandler = new GetStateHandler();
         String toEncrypt = lightTask.getToEncrypt();
         String encrypted;
@@ -33,11 +33,8 @@ public class LightTaskSolver {
 
             //trasmetto lo stato al middleware
             if (i % 100 == 0 && i != 0) {
-                getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID());
+                getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID(), midd_id);
             }
-
-            if(i == toEncrypt.length()-1)
-                System.out.println(encrypted);
         }
         return encrypted;
     }
