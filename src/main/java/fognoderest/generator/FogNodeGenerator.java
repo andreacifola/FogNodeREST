@@ -6,19 +6,19 @@ import fognoderest.utils.RandomNumberGenerator;
 
 public class FogNodeGenerator {
 
-    public FogNode spawnFogNode(Integer randomNumber) {
+    public FogNode spawnFogNode(String port,Integer randomNumber) {
         FogNode fogNode = new FogNode();
         //Integer randomNumber = new RandomNumberGenerator().generateRandom(1,3);
         if (randomNumber == 1)
-            generateFogNodeParameters(fogNode, "LIGHT", 11, 39);
+            generateFogNodeParameters(fogNode,port, "LIGHT", 11, 39);
         else if (randomNumber == 2)
-            generateFogNodeParameters(fogNode, "MEDIUM", 40, 79);
+            generateFogNodeParameters(fogNode,port, "MEDIUM", 40, 79);
         else
-            generateFogNodeParameters(fogNode, "HEAVY", 80, 100);
+            generateFogNodeParameters(fogNode,port, "HEAVY", 80, 100);
         return fogNode;
     }
 
-    private void generateFogNodeParameters(FogNode fogNode, String type, Integer start, Integer end) {
+    private void generateFogNodeParameters(FogNode fogNode,String port, String type, Integer start, Integer end) {
         fogNode.setType(type);
         fogNode.setRam(new RandomNumberGenerator().generateRandom(start, end));
         fogNode.setCpu(new RandomNumberGenerator().generateRandom(start, end));
@@ -28,6 +28,7 @@ public class FogNodeGenerator {
         fogNode.setCurrentCpu(fogNode.getCpu());
         fogNode.setCurrentBattery(fogNode.getBattery().floatValue());
         fogNode.setCurrentStorage(fogNode.getStorage());
+        fogNode.setPort(port);
 
         //It's approximatively the middle Italy
         Double latitude = new RandomNumberGenerator().generateRandom(41.5, 42.5);

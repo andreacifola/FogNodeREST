@@ -10,15 +10,14 @@ import java.io.IOException;
 
 public class RegistrationHandler {
 
-    private ObjectMapper mapper = new ObjectMapper();
+    //private ObjectMapper mapper = new ObjectMapper();
 
-    public FogNode sendPostRequestForRegistration(String requestUrl, String payload) throws IOException, InterruptedException {
+    public void sendPostRequestForRegistration(String requestUrl, String payload) throws IOException, InterruptedException {
         GetMiddlewareStatus getMiddlewareStatus = new GetMiddlewareStatus();
         while (getMiddlewareStatus.getStatus("http://localhost:8080/registration") != 200) {
             Thread.sleep(1000);
         }
         SendPostRequest sendPostRequest = new SendPostRequest();
-        StringBuilder jsonString = sendPostRequest.postRequest(requestUrl, payload);
-        return mapper.readValue(jsonString.toString(), FogNode.class);
+        sendPostRequest.postRequest(requestUrl, payload);
     }
 }
