@@ -12,7 +12,7 @@ public class MediumTaskSolver {
         int i;
 
         //recupero il tempo che eventualmente può essere legato ad una esecuzione precedente
-        Long time = mediumTask.getTime();
+        Long time = mediumTask.getCurrentTime();
 
         Long start = System.currentTimeMillis();
 
