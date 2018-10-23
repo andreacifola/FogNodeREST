@@ -30,7 +30,7 @@ public class FogNodeRestApplication implements EnvironmentAware {
 		System.out.println("porta : "+port);
 
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(port,2);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(port,3);
 
 		JsonBuilder jsonBuilder = new JsonBuilder();
 		RegistrationHandler registrationHandler = new RegistrationHandler();

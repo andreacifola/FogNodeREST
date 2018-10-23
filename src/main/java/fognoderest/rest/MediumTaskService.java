@@ -16,7 +16,6 @@ public class MediumTaskService {
 
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<MediumTask> solveMediumTask(@PathVariable int id, @RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException, InterruptedException {
-        //TODO inserire thread
         //responseWriter.sendResponse("Processing Task...",response);
 
         System.out.println("mediumTask Received - NODE");

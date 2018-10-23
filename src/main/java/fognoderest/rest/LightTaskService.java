@@ -17,7 +17,6 @@ public class LightTaskService {
 
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<LightTask> solveLightTask(@PathVariable int id, @RequestBody LightTask lightTask, HttpServletResponse response) throws IOException, InterruptedException {
-        //TODO inserire thread
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("lightTask Received - NODE");
 

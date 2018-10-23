@@ -15,7 +15,6 @@ public class HeavyTaskService {
 
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@PathVariable int id, @RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException, InterruptedException {
-        //TODO inserire thread
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("heavyTask Received - NODE");
         System.out.println(id);
