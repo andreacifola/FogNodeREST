@@ -36,6 +36,11 @@ public class MediumTaskService {
         });
         t.start();
         t.join();
+
+        if(mediumTask.getTime() != 0){
+            mediumTask.setState(-2);
+        }
+
         System.out.println("mediumTask Eseguito in " + mediumTask.getTime());
 
         //task is removed from interruption list

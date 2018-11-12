@@ -33,6 +33,11 @@ public class HeavyTaskService {
         t.start();
         t.join();
 
+        if(heavyTask.getResponse() != null){
+            heavyTask.setLast(-2);
+
+        }
+
         System.out.println(InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID()));
 
         System.out.println("heavyTask Eseguito. Il fattoriale è : " + heavyTask.getResponse());

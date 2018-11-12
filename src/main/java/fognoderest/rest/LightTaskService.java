@@ -36,6 +36,12 @@ public class LightTaskService {
         });
         t.start();
         t.join();
+
+        if(lightTask.getEncrypted() != null){
+            lightTask.setLoopCount(-2);
+
+        }
+
         System.out.println("lightTask Eseguito. Testo cifrato :" + lightTask.getEncrypted());
 
         //task is removed from interruption list
