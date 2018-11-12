@@ -2,6 +2,7 @@ package fognoderest.solver;
 
 import fognoderest.entities.MediumTask;
 import fognoderest.handler.GetStateHandler;
+import fognoderest.handler.InterruptionHandler;
 
 import java.io.IOException;
 
@@ -17,6 +18,15 @@ public class MediumTaskSolver {
         Long start = System.currentTimeMillis();
 
         for (i = state+1; i < 1000000; i++) {
+
+            //controllo interruzione
+            boolean flag = InterruptionHandler.getInstance().getFlagByTask(mediumTask.getID());
+            if(flag){
+                //interruption
+                System.out.println("job da interrompere");
+                return 0;
+            }
+
             if (i%1000 == 0 && i != 0)
                 getStateHandler.sendMediumTaskState(i, System.currentTimeMillis()-start, mediumTask.getID(), midd_id);
 

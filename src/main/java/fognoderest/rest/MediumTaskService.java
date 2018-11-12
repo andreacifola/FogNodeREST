@@ -1,6 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.MediumTask;
+import fognoderest.handler.InterruptionHandler;
 import fognoderest.solver.MediumTaskSolver;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,10 @@ public class MediumTaskService {
         //responseWriter.sendResponse("Processing Task...",response);
 
         System.out.println("mediumTask Received - NODE");
+        mediumTask.setID(id);
+
+        //task is added to interruption list
+        InterruptionHandler.getInstance().addTaskToList(mediumTask);
 
         Thread t = new Thread(() -> {
 
@@ -32,6 +37,9 @@ public class MediumTaskService {
         t.start();
         t.join();
         System.out.println("mediumTask Eseguito in " + mediumTask.getTime());
+
+        //task is removed from interruption list
+        InterruptionHandler.getInstance().removeTask(mediumTask.getID());
 
         return new ResponseEntity<>(mediumTask, HttpStatus.OK);
     }

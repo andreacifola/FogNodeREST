@@ -1,6 +1,7 @@
 package fognoderest.rest;
 
 import fognoderest.entities.LightTask;
+import fognoderest.handler.InterruptionHandler;
 import fognoderest.solver.LightTaskSolver;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,10 @@ public class LightTaskService {
     public ResponseEntity<LightTask> solveLightTask(@PathVariable int id, @RequestBody LightTask lightTask, HttpServletResponse response) throws IOException, InterruptedException {
         //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("lightTask Received - NODE");
+        lightTask.setID(id);
+
+        //task is added to interruption list
+        InterruptionHandler.getInstance().addTaskToList(lightTask);
 
         Thread t = new Thread(() -> {
 
@@ -32,6 +37,9 @@ public class LightTaskService {
         t.start();
         t.join();
         System.out.println("lightTask Eseguito. Testo cifrato :" + lightTask.getEncrypted());
+
+        //task is removed from interruption list
+        InterruptionHandler.getInstance().removeTask(lightTask.getID());
 
         return new ResponseEntity<>(lightTask, HttpStatus.OK);
     }

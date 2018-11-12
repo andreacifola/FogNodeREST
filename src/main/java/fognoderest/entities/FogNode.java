@@ -16,6 +16,7 @@ public class FogNode {
     private Double longitude;
     private String powered;
 
+
     public FogNode() { }
 
     public FogNode(Integer id, Integer ram, Integer cpu, Integer battery, Integer storage, String type,
@@ -36,6 +37,7 @@ public class FogNode {
         this.longitude = longitude;
         this.powered = powered;
     }
+
 
     public Integer getId() {
         return id;

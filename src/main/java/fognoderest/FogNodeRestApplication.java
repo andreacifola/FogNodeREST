@@ -11,6 +11,7 @@ import org.springframework.core.env.Environment;
 
 import javax.management.MalformedObjectNameException;
 import java.io.IOException;
+import java.net.InetAddress;
 
 
 @SpringBootApplication
@@ -25,6 +26,9 @@ public class FogNodeRestApplication implements EnvironmentAware {
 
 	public static void main(String[] args) throws IOException, MalformedObjectNameException, InterruptedException {
 		SpringApplication.run(FogNodeRestApplication.class, args);
+
+		InetAddress IP=InetAddress.getLocalHost();
+		System.out.println("IP of my system is := "+IP.getHostAddress());
 
 		String port = environment.getProperty("local.server.port");
 		System.out.println("porta : "+port);
@@ -41,6 +45,6 @@ public class FogNodeRestApplication implements EnvironmentAware {
 				fogNode.getCpu() + "; RAM = " + fogNode.getRam() + "; battery = " + fogNode.getBattery() +
 				"; storage = " + fogNode.getStorage() + "; port = " + fogNode.getPort() +
 				"; latitude = " + fogNode.getLatitude() + "; longitude = " + fogNode.getLongitude() +
-				"; powered = " + fogNode.getPowered());
+				"; powered = " + fogNode.getPowered() );
 	}
 }
