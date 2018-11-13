@@ -19,7 +19,15 @@ public class MediumTaskService {
         //responseWriter.sendResponse("Processing Task...",response);
 
         System.out.println("mediumTask Received - NODE");
+        mediumTask.setID(id);
 
+        //task is added to interruption list
+        InterruptionHandler.getInstance().addTaskToList(mediumTask);
+
+        MediumTaskSolver solver = new MediumTaskSolver();
+        MediumTask res = solver.count(mediumTask, mediumTask.getState(), mediumTask.getCurrentTime(), id);
+
+        /*
         Thread t = new Thread(() -> {
 
             MediumTaskSolver solver = new MediumTaskSolver();
@@ -31,8 +39,16 @@ public class MediumTaskService {
         });
         t.start();
         t.join();
+*/
+        if(mediumTask.getTime() != 0){
+            mediumTask.setState(-2);
+        }
+
         System.out.println("mediumTask Eseguito in " + mediumTask.getTime());
 
-        return new ResponseEntity<>(mediumTask, HttpStatus.OK);
+        //task is removed from interruption list
+        InterruptionHandler.getInstance().removeTask(mediumTask.getID());
+
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 }

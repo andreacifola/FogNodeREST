@@ -11,7 +11,6 @@ import org.springframework.core.env.Environment;
 
 import javax.management.MalformedObjectNameException;
 import java.io.IOException;
-import java.net.InetAddress;
 
 
 @SpringBootApplication

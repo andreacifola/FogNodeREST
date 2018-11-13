@@ -16,12 +16,6 @@ public class FogNode {
     private Double longitude;
     private String powered;
 
-    private String addr;
-
-    public String getAddr() { return addr; }
-
-    public void setAddr(String addr) { this.addr = addr; }
-
     public FogNode() { }
 
     public FogNode(Integer id, Integer ram, Integer cpu, Integer battery, Integer storage, String type,
