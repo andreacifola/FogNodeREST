@@ -39,7 +39,6 @@ public class HeavyTaskService {
 
         if(heavyTask.getResponse() != null){
             heavyTask.setLast(-2);
-
         }
 
         System.out.println(InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID()));

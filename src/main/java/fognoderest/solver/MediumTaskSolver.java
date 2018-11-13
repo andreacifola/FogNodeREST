@@ -16,7 +16,6 @@ public class MediumTaskSolver {
 
         //recupero il tempo che eventualmente può essere legato ad una esecuzione precedente
         Long time = mediumTask.getCurrentTime();
-
         Long start = System.currentTimeMillis();
 
         for (i = state+1; i < 1000000; i++) {
@@ -42,7 +41,6 @@ public class MediumTaskSolver {
         time = time + System.currentTimeMillis() - start;
 
         //Long time = System.currentTimeMillis() - start;
-
         res.setTime(time);
         res.setState(i);
         return res;

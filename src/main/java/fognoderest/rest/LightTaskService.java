@@ -42,7 +42,6 @@ public class LightTaskService {
 
         if(lightTask.getEncrypted() != null){
             lightTask.setLoopCount(-2);
-
         }
 
         System.out.println("lightTask Eseguito. Testo cifrato :" + lightTask.getEncrypted() + "\n");

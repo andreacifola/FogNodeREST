@@ -20,7 +20,7 @@ public class HeavyTaskSolver {
 
             //controllo interruzione
             boolean flag = InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID());
-            if(flag){
+            if(flag) {
                 //interruption
 
                 try {

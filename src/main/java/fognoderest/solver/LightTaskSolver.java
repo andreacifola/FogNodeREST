@@ -28,7 +28,6 @@ public class LightTaskSolver {
 
         int i;
 
-
         for (i = loopCount+1; i < toEncrypt.length(); i++) {
 
             //controllo interruzione

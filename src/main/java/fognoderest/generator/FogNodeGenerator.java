@@ -7,6 +7,7 @@ public class FogNodeGenerator {
 
     public FogNode spawnFogNode(String port,Integer randomNumber) {
         FogNode fogNode = new FogNode();
+        //TODO togliere il commento alla riga sotto
         //Integer randomNumber = new RandomNumberGenerator().generateRandom(1,3);
         if (randomNumber == 1)
             generateFogNodeParameters(fogNode,port, "LIGHT", 11, 39);
@@ -21,7 +22,7 @@ public class FogNodeGenerator {
         fogNode.setType(type);
         fogNode.setRam(new RandomNumberGenerator().generateRandom(start, end));
         fogNode.setCpu(new RandomNumberGenerator().generateRandom(start, end));
-        fogNode.setBattery(new RandomNumberGenerator().generateRandom(start*1000, end*1000));
+        fogNode.setBattery(new RandomNumberGenerator().generateRandom(start*100, end*100));
         fogNode.setStorage(new RandomNumberGenerator().generateRandom(start, end));
         fogNode.setCurrentRam(fogNode.getRam());
         fogNode.setCurrentCpu(fogNode.getCpu());

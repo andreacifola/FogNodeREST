@@ -16,7 +16,6 @@ public class InterruptionHandler {
     public void addTaskToList(Task task){
         TaskFlag taskFlag = new TaskFlag(task);
         taskList.add(taskFlag);
-        printToString();
     }
 
     public boolean getFlagByTask(int id){
@@ -24,7 +23,6 @@ public class InterruptionHandler {
             if(taskList.get(i).getTask().getID() ==id){
                 return taskList.get(i).isFlag();
             }
-
         }
         return false;
     }
@@ -42,33 +40,17 @@ public class InterruptionHandler {
                 taskList.get(i).setFlag(true);
                 //ho cambiato il flag con successo
                 System.out.println("flag cambiato con successo");
-
                 return true;
             }
-
         }
-
         return false;
     }
 
     public void removeTask(int id){
-
         for (int i = 0; i < taskList.size(); i++) {
-
             if(taskList.get(i).getTask().getID() == id){
-
                 taskList.remove(i);
-
             }
-
-        }
-
-    }
-
-    public void printToString() {
-        for (int i = 0; i < taskList.size() ; i++) {
-            System.out.println(taskList.get(i).getTask().getID() + " - flag: "+taskList.get(i).isFlag());
-
         }
     }
 }
@@ -111,5 +93,3 @@ class TaskFlag{
         this.taskThread = taskThread;
     }
 }
-
-

@@ -21,17 +21,13 @@ public class InterruptionService {
 
         String res;
         boolean esito = InterruptionHandler.getInstance().interruptTask(id);
-        if(esito){
+        if(esito) {
             res = "ACK";
             System.out.println("Interruption request completed - id: "+id+"\n");
-        }else{
+        } else {
             res = "NACK";
             System.out.println("Interruption request rejected - id: "+id+"\n");
         }
-
-
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
-
-
 }
