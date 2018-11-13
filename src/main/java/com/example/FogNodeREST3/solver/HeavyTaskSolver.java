@@ -2,6 +2,7 @@ package com.example.FogNodeREST3.solver;
 
 import com.example.FogNodeREST3.entities.HeavyTask;
 import com.example.FogNodeREST3.handler.GetStateHandler;
+import com.example.FogNodeREST3.handler.InterruptionHandler;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -21,29 +22,29 @@ public class HeavyTaskSolver {
             boolean flag = InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID());
             if(flag){
                 //interruption
-
+                /*
                 try {
                     getStateHandler.sendHeavyTaskState(heavyTask.getID(), fact, i, midd_id);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                */
                 System.out.println("job da interrompere");
                 res.setResponse(null);
-                res.setLast(i);
+                res.setLast(i-1);
                 res.setPartial(fact);
                 return res;
             }
 
             fact = fact.multiply(BigInteger.valueOf(i));
 
-            //if (i % 100 == 0 && i != 0) {
+            if (i % 100 == 0 && i != 0) {
                 try {
                     getStateHandler.sendHeavyTaskState(heavyTask.getID(), fact, i, midd_id);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-           // }
+            }
         }
         System.out.println("fattoriale di n = " + n + ": " + fact);
         res.setResponse(fact);

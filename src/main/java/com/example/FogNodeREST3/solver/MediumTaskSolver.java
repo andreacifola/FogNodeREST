@@ -2,6 +2,7 @@ package com.example.FogNodeREST3.solver;
 
 import com.example.FogNodeREST3.entities.MediumTask;
 import com.example.FogNodeREST3.handler.GetStateHandler;
+import com.example.FogNodeREST3.handler.InterruptionHandler;
 
 import java.io.IOException;
 
@@ -26,7 +27,7 @@ public class MediumTaskSolver {
                 //interruption
                 System.out.println("job da interrompere");
                 res.setTime(0);
-                res.setState(i);
+                res.setState(i-1);
                 return res;
             }
 

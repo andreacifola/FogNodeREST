@@ -2,6 +2,7 @@ package com.example.FogNodeREST3.solver;
 
 import com.example.FogNodeREST3.entities.LightTask;
 import com.example.FogNodeREST3.handler.GetStateHandler;
+import com.example.FogNodeREST3.handler.InterruptionHandler;
 
 import java.io.IOException;
 

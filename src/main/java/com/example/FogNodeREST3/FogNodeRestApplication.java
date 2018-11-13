@@ -28,20 +28,21 @@ public class FogNodeRestApplication implements EnvironmentAware {
 	public static void main(String[] args) throws IOException, MalformedObjectNameException, InterruptedException {
 		SpringApplication.run(FogNodeRestApplication.class, args);
 
-		//String port = environment.getProperty("local.server.port");
+		String port = environment.getProperty("local.server.port");
         //todo porta container per accedere al nodo
-		String port = "32010";
+		//String port = "32010";
 		System.out.println("porta : " + port);
 
 		FogNodeGenerator fogNodeGenerator = new FogNodeGenerator();
-		FogNode fogNode = fogNodeGenerator.spawnFogNode(port,2);
+		FogNode fogNode = fogNodeGenerator.spawnFogNode(port,3);
 
 
 		//todo prova indirizzo
 		//InetAddress IP=InetAddress.getLocalHost();
 
 		//todo in port c'è l'ip interno del nodo + porta del container
-		fogNode.setPort("172.20.47.247" + ":" + fogNode.getPort());
+		//fogNode.setPort("172.20.47.247" + ":" + fogNode.getPort());
+		fogNode.setPort(port);
         System.out.println("*****" + fogNode.getPort());
 
 

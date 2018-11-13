@@ -57,8 +57,8 @@ public class GetStateHandler {
      */
     public void sendMediumTaskState(Integer state, Long currentTime, Integer taskId, int id) throws IOException {
         String payload = mediumTaskStateToJson(taskId, state, currentTime);
-        //String requestUrl = "http://localhost:8080/state/medium/"+id;
-        String requestUrl = "http://" + mwIp + ":8080/state/medium/" + id;
+        String requestUrl = "http://localhost:8080/state/medium/"+id;
+        //String requestUrl = "http://" + mwIp + ":8080/state/medium/" + id;
         sendPostRequestForMediumTaskState(requestUrl, payload);
     }
 
@@ -90,8 +90,8 @@ public class GetStateHandler {
      */
     public void sendHeavyTaskState(Integer taskId, BigInteger partial, int last, int id) throws IOException {
         String payload = heavyTaskStateToJson(taskId, partial, last);
-        //String requestUrl = "http://localhost:8080/state/heavy/"+id;
-        String requestUrl = "http://" + mwIp + ":8080/state/heavy/" + id;
+        String requestUrl = "http://localhost:8080/state/heavy/"+id;
+        //String requestUrl = "http://" + mwIp + ":8080/state/heavy/" + id;
         sendPostRequestForHeavyTaskState(requestUrl, payload);
     }
 

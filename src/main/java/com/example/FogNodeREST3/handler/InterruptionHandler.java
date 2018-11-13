@@ -1,6 +1,6 @@
-package fognoderest.handler;
+package com.example.FogNodeREST3.handler;
 
-import fognoderest.entities.Task;
+import com.example.FogNodeREST3.entities.Task;
 
 import java.util.ArrayList;
 
