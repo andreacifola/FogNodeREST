@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: fognoderest.FogNodeRestApplication
+Main-Class: com.example.FogNodeREST3.FogNodeRestApplication
