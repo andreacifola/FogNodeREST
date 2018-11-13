@@ -43,9 +43,6 @@ public class MediumTaskSolver {
 
         //Long time = System.currentTimeMillis() - start;
 
-        if(mediumTask.getNumber() == i)
-            System.out.println("mediumTask completato in " + time + " msec");
-
         res.setTime(time);
         res.setState(i);
         return res;

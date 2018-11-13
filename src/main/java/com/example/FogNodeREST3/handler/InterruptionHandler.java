@@ -67,7 +67,7 @@ public class InterruptionHandler {
 
     public void printToString() {
         for (int i = 0; i < taskList.size() ; i++) {
-            System.out.println(taskList.get(i).getTask().getID() + " - flag: "+taskList.get(i).isFlag()+" \n");
+            System.out.println(taskList.get(i).getTask().getID() + " - flag: "+taskList.get(i).isFlag());
 
         }
     }
