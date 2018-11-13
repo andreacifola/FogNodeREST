@@ -25,6 +25,10 @@ public class MediumTaskService {
         //task is added to interruption list
         InterruptionHandler.getInstance().addTaskToList(mediumTask);
 
+        MediumTaskSolver solver = new MediumTaskSolver();
+        MediumTask res = solver.count(mediumTask, mediumTask.getState(), mediumTask.getCurrentTime(), id);
+
+        /*
         Thread t = new Thread(() -> {
 
             MediumTaskSolver solver = new MediumTaskSolver();
@@ -36,7 +40,7 @@ public class MediumTaskService {
         });
         t.start();
         t.join();
-
+*/
         if(mediumTask.getTime() != 0){
             mediumTask.setState(-2);
         }
@@ -46,6 +50,6 @@ public class MediumTaskService {
         //task is removed from interruption list
         InterruptionHandler.getInstance().removeTask(mediumTask.getID());
 
-        return new ResponseEntity<>(mediumTask, HttpStatus.OK);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 }

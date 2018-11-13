@@ -14,8 +14,10 @@ public class LightTaskSolver {
      * che ha cifrato. Il ciclo di cifratura inizierà da tale indice +1, per tale motivo ii lightTask devono
      * essere inizializzati con stato pari a -1
      */
-    public String CaesarCode(LightTask lightTask, Integer loopCount, int midd_id) throws IOException {
+    public LightTask CaesarCode(LightTask lightTask, Integer loopCount, int midd_id) throws IOException {
         GetStateHandler getStateHandler = new GetStateHandler();
+
+        LightTask res = lightTask;
         String toEncrypt = lightTask.getToEncrypt();
         String encrypted;
 
@@ -25,6 +27,8 @@ public class LightTaskSolver {
             encrypted = lightTask.getEncrypted();
 
         int i;
+
+
         for (i = loopCount+1; i < toEncrypt.length(); i++) {
 
             //controllo interruzione
@@ -32,7 +36,10 @@ public class LightTaskSolver {
             if(flag){
                 //interruption
                 System.out.println("job da interrompere");
-                return null;
+
+                res.setLoopCount(i);
+                res.setEncrypted(null);
+                return res;
             }
 
             char letter = toEncrypt.charAt(i);
@@ -52,7 +59,11 @@ public class LightTaskSolver {
             if (i % 100 == 0 && i != 0) {
                 getStateHandler.sendLightTaskState(i, encrypted, lightTask.getID(), midd_id);
             }
+
+
         }
-        return encrypted;
+        res.setLoopCount(i);
+        res.setEncrypted(encrypted);
+        return res;
     }
 }

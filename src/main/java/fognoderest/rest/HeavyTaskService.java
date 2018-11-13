@@ -16,22 +16,25 @@ public class HeavyTaskService {
 
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@PathVariable int id, @RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException, InterruptedException {
-        //responseWriter.sendResponse("Processing Task...",response);
         System.out.println("heavyTask Received - NODE");
         System.out.println(id);
         heavyTask.setID(id);
         System.out.println("heavy task: "+heavyTask.getID());
 
-        Thread t = new Thread(() -> {
-            HeavyTaskSolver solver = new HeavyTaskSolver();
-            heavyTask.setResponse(solver.factorial(heavyTask, heavyTask.getN(), heavyTask.getPartial(), heavyTask.getLast(), id));
-        });
-
         //task is added to interruption list
         InterruptionHandler.getInstance().addTaskToList(heavyTask);
 
+        HeavyTaskSolver solver = new HeavyTaskSolver();
+        HeavyTask res = solver.factorial(heavyTask, heavyTask.getN(), heavyTask.getPartial(), heavyTask.getLast(), id);
+
+        /*
+        Thread t = new Thread(() -> {
+            HeavyTaskSolver solver = new HeavyTaskSolver();
+        //    heavyTask.setResponse(solver.factorial(heavyTask, heavyTask.getN(), heavyTask.getPartial(), heavyTask.getLast(), id));
+        });
         t.start();
         t.join();
+        */
 
         if(heavyTask.getResponse() != null){
             heavyTask.setLast(-2);
@@ -45,6 +48,6 @@ public class HeavyTaskService {
         //task is removed from interruption list
         InterruptionHandler.getInstance().removeTask(heavyTask.getID());
 
-        return new ResponseEntity<>(heavyTask, HttpStatus.OK);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 }
