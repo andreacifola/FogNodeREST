@@ -17,6 +17,7 @@ public class LightTaskService {
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<LightTask> solveLightTask(@PathVariable int id, @RequestBody LightTask lightTask, HttpServletResponse response) throws IOException, InterruptedException {
         //responseWriter.sendResponse("Processing Task...",response);
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("lightTask Received - NODE");
         lightTask.setID(id);
 
@@ -44,7 +45,7 @@ public class LightTaskService {
 
         }
 
-        System.out.println("lightTask Eseguito. Testo cifrato :" + lightTask.getEncrypted());
+        System.out.println("lightTask Eseguito. Testo cifrato :" + lightTask.getEncrypted() + "\n");
 
         //task is removed from interruption list
         InterruptionHandler.getInstance().removeTask(lightTask.getID());

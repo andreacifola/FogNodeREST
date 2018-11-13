@@ -18,7 +18,7 @@ public class MediumTaskService {
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<MediumTask> solveMediumTask(@PathVariable int id, @RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException, InterruptedException {
         //responseWriter.sendResponse("Processing Task...",response);
-
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("mediumTask Received - NODE");
         mediumTask.setID(id);
 
@@ -45,7 +45,7 @@ public class MediumTaskService {
             mediumTask.setState(-2);
         }
 
-        System.out.println("mediumTask Eseguito in " + mediumTask.getTime());
+        System.out.println("mediumTask Eseguito in " + mediumTask.getTime() + " msec\n");
 
         //task is removed from interruption list
         InterruptionHandler.getInstance().removeTask(mediumTask.getID());
