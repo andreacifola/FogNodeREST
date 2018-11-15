@@ -15,6 +15,9 @@ import java.io.IOException;
 public class MediumTaskService {
     //ResponseWriter responseWriter = new ResponseWriter();
 
+    /**
+     * this remote method is invoked by the middleware to send a medium task to the fog node.
+     */
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<MediumTask> solveMediumTask(@PathVariable int id, @RequestBody MediumTask mediumTask, HttpServletResponse response) throws IOException, InterruptedException {
         //responseWriter.sendResponse("Processing Task...",response);
@@ -28,27 +31,16 @@ public class MediumTaskService {
         MediumTaskSolver solver = new MediumTaskSolver();
         MediumTask res = solver.count(mediumTask, mediumTask.getState(), mediumTask.getCurrentTime(), id);
 
-        /*
-        Thread t = new Thread(() -> {
-
-            MediumTaskSolver solver = new MediumTaskSolver();
-            try {
-                mediumTask.setTime(solver.count(mediumTask, mediumTask.getState(), mediumTask.getCurrentTime(), id));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        t.start();
-        t.join();
-*/
+        //se il valore di ritorno non è nullo, il task è stato completato
         if(mediumTask.getTime() != 0){
             mediumTask.setState(-2);
+
+            //task is removed from interruption list
+            InterruptionHandler.getInstance().removeTask(mediumTask.getID());
         }
 
         System.out.println("mediumTask Eseguito in " + mediumTask.getTime() + " msec\n");
 
-        //task is removed from interruption list
-        InterruptionHandler.getInstance().removeTask(mediumTask.getID());
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

@@ -15,6 +15,9 @@ import java.io.IOException;
 @RequestMapping(path = "heavy")
 public class HeavyTaskService {
 
+    /**
+     * this remote method is invoked by the middleware to send an heavy task to the fog node.
+     */
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<HeavyTask> solveHeavyTask(@PathVariable int id, @RequestBody HeavyTask heavyTask, HttpServletResponse response) throws IOException, InterruptedException {
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -29,25 +32,18 @@ public class HeavyTaskService {
         HeavyTaskSolver solver = new HeavyTaskSolver();
         HeavyTask res = solver.factorial(heavyTask, heavyTask.getN(), heavyTask.getPartial(), heavyTask.getLast(), id);
 
-        /*
-        Thread t = new Thread(() -> {
-            HeavyTaskSolver solver = new HeavyTaskSolver();
-        //    heavyTask.setResponse(solver.factorial(heavyTask, heavyTask.getN(), heavyTask.getPartial(), heavyTask.getLast(), id));
-        });
-        t.start();
-        t.join();
-        */
-
+        //se il valore di ritorno non è nullo, il task è stato completato
         if(heavyTask.getResponse() != null){
             heavyTask.setLast(-2);
+
+            //task is removed from interruption list
+            InterruptionHandler.getInstance().removeTask(heavyTask.getID());
         }
 
-        System.out.println(InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID()));
+//        System.out.println(InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID()));
 
         System.out.println("heavyTask Eseguito. Il fattoriale è : " + heavyTask.getResponse() + "\n");
 
-        //task is removed from interruption list
-        InterruptionHandler.getInstance().removeTask(heavyTask.getID());
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

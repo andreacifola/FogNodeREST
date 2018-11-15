@@ -10,6 +10,15 @@ import java.math.BigInteger;
 public class HeavyTaskSolver {
     GetStateHandler getStateHandler = new GetStateHandler();
 
+    /**
+     * this method returns the factorial of the given number n. during each iteration, it checks for the interruption flag.
+     * @param heavyTask : task
+     * @param n : number
+     * @param partial : keeps track of the result at each step of the for loop
+     * @param last : keeps track of the index i
+     * @param midd_id : task id
+     * @return heavy task
+     */
     public HeavyTask factorial(HeavyTask heavyTask, int n, BigInteger partial, int last, int midd_id){
 
         HeavyTask res = heavyTask;
@@ -22,13 +31,6 @@ public class HeavyTaskSolver {
             boolean flag = InterruptionHandler.getInstance().getFlagByTask(heavyTask.getID());
             if(flag) {
                 //interruption
-                /*
-                try {
-                    getStateHandler.sendHeavyTaskState(heavyTask.getID(), fact, i, midd_id);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                */
                 System.out.println("job da interrompere");
                 res.setResponse(null);
                 res.setLast(i-1);

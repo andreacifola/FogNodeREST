@@ -11,6 +11,9 @@ public class RegistrationHandler {
     //private ObjectMapper mapper = new ObjectMapper();
     private static String mwIp = "a6ce72bb8e6e211e886ee02a7517efe7-507914080.us-east-2.elb.amazonaws.com";
 
+    /**
+     * this method sends a registration request to the middleware
+     */
     public void sendPostRequestForRegistration(String requestUrl, String payload) throws IOException, InterruptedException {
         GetMiddlewareStatus getMiddlewareStatus = new GetMiddlewareStatus();
         //TODO indirizzo mw

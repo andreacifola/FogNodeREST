@@ -14,6 +14,9 @@ import java.io.IOException;
 @RequestMapping(path = "light")
 public class LightTaskService {
 
+    /**
+     * this remote method is invoked by the middleware to send a light task to the fog node.
+     */
     @RequestMapping(path = "{id}", method = RequestMethod.POST)
     public ResponseEntity<LightTask> solveLightTask(@PathVariable int id, @RequestBody LightTask lightTask, HttpServletResponse response) throws IOException, InterruptedException {
         //responseWriter.sendResponse("Processing Task...",response);
@@ -27,27 +30,16 @@ public class LightTaskService {
         LightTaskSolver solver = new LightTaskSolver();
         LightTask res = solver.CaesarCode(lightTask, lightTask.getLoopCount(), id);
 
-        /*
-        Thread t = new Thread(() -> {
-            LightTaskSolver solver = new LightTaskSolver();
-            try {
-                lightTask.setEncrypted(solver.CaesarCode(lightTask, lightTask.getLoopCount(), id));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        t.start();
-        t.join();
-        */
-
+        //se il valore di ritorno non è nullo, il task è stato completato
         if(lightTask.getEncrypted() != null){
             lightTask.setLoopCount(-2);
+
+            //task is removed from interruption list
+            InterruptionHandler.getInstance().removeTask(lightTask.getID());
         }
 
         System.out.println("lightTask Eseguito. Testo cifrato :" + lightTask.getEncrypted() + "\n");
 
-        //task is removed from interruption list
-        InterruptionHandler.getInstance().removeTask(lightTask.getID());
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

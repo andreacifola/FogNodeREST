@@ -8,6 +8,15 @@ import java.io.IOException;
 
 public class MediumTaskSolver {
 
+    /**
+     * this method returns the time it would take to crack a password with a brute force attack.
+     * @param mediumTask : task
+     * @param state : keeps track of the progress
+     * @param currentTime : time
+     * @param midd_id : task id
+     * @return task
+     * @throws IOException
+     */
     public MediumTask count(MediumTask mediumTask, Integer state, Long currentTime, int midd_id) throws IOException {
         GetStateHandler getStateHandler = new GetStateHandler();
         int i;

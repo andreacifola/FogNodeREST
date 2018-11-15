@@ -18,6 +18,11 @@ public class InterruptionHandler {
         taskList.add(taskFlag);
     }
 
+    /**
+     * this method returns a task's interruption flag
+     * @param id
+     * @return
+     */
     public boolean getFlagByTask(int id){
         for (int i = 0; i < taskList.size(); i++) {
             if(taskList.get(i).getTask().getID() ==id){
@@ -46,6 +51,10 @@ public class InterruptionHandler {
         return false;
     }
 
+    /**
+     * this method removes a task from the list
+     * @param id : task id
+     */
     public void removeTask(int id){
         for (int i = 0; i < taskList.size(); i++) {
             if(taskList.get(i).getTask().getID() == id){
