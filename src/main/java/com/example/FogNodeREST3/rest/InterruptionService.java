@@ -25,6 +25,7 @@ public class InterruptionService {
             res = "NACK";
             System.out.println("Interruption request rejected - id: "+id+"\n");
         }
+
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
